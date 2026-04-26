@@ -57,12 +57,26 @@ export const authOptions = {
     // async redirect({ url, baseUrl }) {
     //   return baseUrl
     // },
-    async session({ session, user, token }) {
-      return session
-    },
+    
     async jwt({ token, user, account, profile, isNewUser }) {
-      return token
-    }
+      if (user) {
+        token.id = user.id
+        token.name = user.name,
+          token.email = user.email,
+          token.role = user.role
+      }
+
+      return token;
+    },
+
+    async session({ session, user, token }) {
+      session.user.name = token.name;
+      session.user.email = token.email;
+      session.user.role = token.role;
+      session.user.id = token.id;
+
+      return session;
+    },
 
   }
 

@@ -7,7 +7,7 @@ const UserInfo = () => {
     console.log(session)
     return (
         <div className='min-h-14 border p-5 flex items-center justify-center'>
-            This is user info
+            This is user info: {(session?.data?.user?.name)}
         </div>
     );
 };
