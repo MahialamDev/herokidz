@@ -3,14 +3,18 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const searchParams = useSearchParams();
+  const callback = searchParams.get("callback");
+
   const handleSubmit = async(e) => {
     e.preventDefault();
-     await signIn("credentials", {email, password, redirect: false})
+     await signIn("credentials", {email, password, redirect: true, callbackUrl: callback || '/'})
   };
 
   return (

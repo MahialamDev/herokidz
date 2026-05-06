@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
+import AuthButton from './AuthButton';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,11 +42,7 @@ const Navbar = () => {
 
         {/* Desktop Action Button */}
         <div className="hidden md:block">
-                  <Link href={'/login'}>
-                   <button className="rounded-full bg-blue-600 px-6 py-2 font-bold text-white transition-transform hover:scale-105 active:scale-95">
-            Login
-          </button>
-                  </Link>
+                 <AuthButton />
         </div>
 
         {/* Mobile Menu Icon (Hamburger) */}
@@ -71,9 +68,7 @@ const Navbar = () => {
         <ul className="flex flex-col items-center space-y-4 bg-blue-50 py-6 font-bold text-slate-700">
           {links}
           <li className="pt-2">
-            <button className="rounded-full bg-blue-600 px-10 py-3 text-white shadow-md">
-              Login
-            </button>
+            <AuthButton />
           </li>
         </ul>
       </div>
